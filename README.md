@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/animations/cooking-pan.gif" width="400">
-</p>
-
 <h1 align="center">Recipe Sharing Website 🍽️</h1>
 
 <h3 align="center">
