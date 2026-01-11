@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, food-friendly palette */
+    --background: 40 33% 98%;
+    --foreground: 25 30% 15%;
+
+    --card: 40 40% 99%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 40 40% 99%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Terracotta/Burnt Orange Primary */
+    --primary: 18 70% 50%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Sage Green Secondary */
+    --secondary: 145 25% 85%;
+    --secondary-foreground: 145 35% 25%;
+
+    /* Warm Cream Muted */
+    --muted: 40 30% 94%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Coral Accent */
+    --accent: 12 85% 65%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 33% 98%;
+
+    /* Warm borders */
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 18 70% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom recipe colors */
+    --recipe-easy: 145 45% 55%;
+    --recipe-medium: 45 90% 55%;
+    --recipe-hard: 0 70% 60%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(18 70% 50% / 0.1), hsl(145 25% 85% / 0.3));
+    --gradient-card: linear-gradient(180deg, hsl(40 40% 99%) 0%, hsl(40 33% 96%) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(25 30% 15% / 0.7) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(25 30% 15% / 0.08);
+    --shadow-card-hover: 0 12px 32px -8px hsl(25 30% 15% / 0.15);
+    --shadow-button: 0 4px 12px -2px hsl(18 70% 50% / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 40 33% 98%;
+    --sidebar-foreground: 25 30% 15%;
+    --sidebar-primary: 18 70% 50%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 145 25% 85%;
+    --sidebar-accent-foreground: 145 35% 25%;
+    --sidebar-border: 30 20% 88%;
+    --sidebar-ring: 18 70% 50%;
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 40 33% 95%;
+
+    --card: 25 25% 13%;
+    --card-foreground: 40 33% 95%;
+
+    --popover: 25 25% 13%;
+    --popover-foreground: 40 33% 95%;
+
+    --primary: 18 70% 55%;
+    --primary-foreground: 25 25% 10%;
+
+    --secondary: 145 20% 20%;
+    --secondary-foreground: 145 25% 85%;
+
+    --muted: 25 20% 18%;
+    --muted-foreground: 40 15% 60%;
+
+    --accent: 12 75% 60%;
+    --accent-foreground: 25 25% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 33% 95%;
+
+    --border: 25 20% 20%;
+    --input: 25 20% 20%;
+    --ring: 18 70% 55%;
+
+    --sidebar-background: 25 25% 10%;
+    --sidebar-foreground: 40 33% 95%;
+    --sidebar-primary: 18 70% 55%;
+    --sidebar-primary-foreground: 25 25% 10%;
+    --sidebar-accent: 145 20% 20%;
+    --sidebar-accent-foreground: 145 25% 85%;
+    --sidebar-border: 25 20% 20%;
+    --sidebar-ring: 18 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .recipe-card {
+    @apply relative overflow-hidden rounded-xl bg-card transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .recipe-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .recipe-card-image {
+    @apply relative overflow-hidden;
+  }
+
+  .recipe-card-image::after {
+    content: '';
+    @apply absolute inset-0;
+    background: var(--gradient-overlay);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .recipe-card:hover .recipe-card-image::after {
+    opacity: 1;
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .difficulty-easy {
+    @apply bg-[hsl(var(--recipe-easy))] text-white;
+  }
+
+  .difficulty-medium {
+    @apply bg-[hsl(var(--recipe-medium))] text-foreground;
+  }
+
+  .difficulty-hard {
+    @apply bg-[hsl(var(--recipe-hard))] text-white;
+  }
+
+  .nav-link {
+    @apply relative text-muted-foreground transition-colors hover:text-primary;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .category-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all duration-200;
+    @apply bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .category-chip.active {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
