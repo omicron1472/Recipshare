@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Mail, Lock, User, Eye, EyeOff, ChefHat } from 'lucide-react';
+import { X, Mail, Lock, User, Eye, EyeOff, ChefHat, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,6 +16,7 @@ export function AuthModal({ isOpen, onClose, mode, onModeChange }: AuthModalProp
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     password: '',
   });
 
@@ -45,7 +46,7 @@ export function AuthModal({ isOpen, onClose, mode, onModeChange }: AuthModalProp
             <ChefHat className="h-8 w-8 text-primary-foreground" />
           </div>
           <h2 className="font-serif text-2xl font-semibold text-foreground">
-            {mode === 'login' ? 'Welcome back' : 'Join Tastify'}
+            {mode === 'login' ? 'Welcome back' : 'Join RecipShare'}
           </h2>
           <p className="mt-2 text-muted-foreground">
             {mode === 'login'
@@ -89,6 +90,24 @@ export function AuthModal({ isOpen, onClose, mode, onModeChange }: AuthModalProp
               />
             </div>
           </div>
+
+          {mode === 'signup' && (
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="pl-10"
+                  required
+                />
+              </div>
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>

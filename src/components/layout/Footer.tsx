@@ -38,7 +38,7 @@ export function Footer() {
                 <ChefHat className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="font-serif text-xl font-semibold text-foreground">
-                Tastify
+                RecipShare
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
@@ -159,7 +159,7 @@ export function Footer() {
       <div className="border-t border-border py-6">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <p className="text-sm text-muted-foreground">
-            © 2024 Tastify. All rights reserved.
+            © 2024 RecipShare. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
             Made with ❤️ for food lovers everywhere

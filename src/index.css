@@ -69,13 +69,13 @@
   }
 
   .dark {
-    --background: 25 25% 10%;
+    --background: 25 22% 16%;
     --foreground: 40 33% 95%;
 
-    --card: 25 25% 13%;
+    --card: 25 22% 20%;
     --card-foreground: 40 33% 95%;
 
-    --popover: 25 25% 13%;
+    --popover: 25 22% 20%;
     --popover-foreground: 40 33% 95%;
 
     --primary: 18 70% 55%;
@@ -84,8 +84,8 @@
     --secondary: 145 20% 20%;
     --secondary-foreground: 145 25% 85%;
 
-    --muted: 25 20% 18%;
-    --muted-foreground: 40 15% 60%;
+    --muted: 25 20% 22%;
+    --muted-foreground: 40 20% 65%;
 
     --accent: 12 75% 60%;
     --accent-foreground: 25 25% 10%;
@@ -93,8 +93,8 @@
     --destructive: 0 70% 50%;
     --destructive-foreground: 40 33% 95%;
 
-    --border: 25 20% 20%;
-    --input: 25 20% 20%;
+    --border: 25 20% 25%;
+    --input: 25 20% 25%;
     --ring: 18 70% 55%;
 
     --sidebar-background: 25 25% 10%;
@@ -118,7 +118,12 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', Georgia, serif;
   }
 }
@@ -203,6 +208,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -218,22 +224,34 @@
       opacity: 0;
       transform: scale(0.95);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
     }
   }
 
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
 
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }

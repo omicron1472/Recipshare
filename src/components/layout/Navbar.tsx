@@ -39,7 +39,7 @@ export function Navbar({ showSearch = false }: NavbarProps) {
                 <ChefHat className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="hidden font-serif text-xl font-semibold text-foreground sm:block">
-                Tastify
+                RecipShare
               </span>
             </Link>
 
