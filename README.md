@@ -1,12 +1,4 @@
-<p align="center">
-  <img src="assets/banner.png" width="100%">
-</p>
-
-<p align="center">
-  <img src="assets/animations/cooking-pan.gif" width="400">
-</p>
-
-<h1 align="center">Recipe Sharing Website 🍽️</h1>
+<h1 align="center">Recipshare 🍽️</h1>
 
 <h3 align="center">
   🍽️ Cooking ideas come alive with code & creativity
@@ -25,14 +17,14 @@
 </p>
 
 <p align="center">
-  <img src="assets/gifs/demo.gif" alt="Recipe Sharing Website Demo" width="800"/>
+  <img src="assets/gifs/demo.gif" alt="Recipshare Demo" width="800"/>
 </p>
 
 ---
 
 ## 📖 About The Project
 
-**Recipe Sharing Website** is a modern, full-stack web application designed to bring food enthusiasts together. Whether you're a home cook looking for dinner inspiration, a food blogger wanting to share your culinary creations, or a student learning to cook, this platform offers everything you need.
+**Recipshare** is a modern, full-stack web application designed to bring food enthusiasts together. Whether you're a home cook looking for dinner inspiration, a food blogger wanting to share your culinary creations, or a student learning to cook, this platform offers everything you need.
 
 ### 🎯 Core Goals
 
@@ -294,7 +286,7 @@ Create a `.env` file with the following variables:
 
 ```env
 # Application
-VITE_APP_NAME=Recipe Sharing Website
+VITE_APP_NAME=Recipshare
 VITE_APP_URL=http://localhost:8080
 
 # Firebase Authentication
@@ -377,7 +369,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ```
 MIT License
 
-Copyright (c) 2024 Recipe Sharing Website
+Copyright (c) 2024 Recipshare
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -393,7 +385,7 @@ copies or substantial portions of the Software.
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by Your Name</strong>
+  <strong>Built with ❤️ by Om Shinde</strong>
 </p>
 
 <p align="center">
