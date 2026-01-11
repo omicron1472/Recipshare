@@ -1,8 +1,4 @@
 <p align="center">
-  <img src="assets/banner.png" width="100%">
-</p>
-
-<p align="center">
   <img src="assets/animations/cooking-pan.gif" width="400">
 </p>
 
@@ -393,7 +389,7 @@ copies or substantial portions of the Software.
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by Your Name</strong>
+  <strong>Built with ❤️ by Om Shinde</strong>
 </p>
 
 <p align="center">
