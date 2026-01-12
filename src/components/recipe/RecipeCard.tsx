@@ -39,8 +39,8 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
   };
 
   return (
-    <Link to={`/recipe/${recipe.id}`} className="group">
-      <article className="recipe-card">
+    <Link to={`/recipe/${recipe.id}`} className="group h-full">
+      <article className="recipe-card h-full flex flex-col">
         {/* Image Container */}
         <div className="recipe-card-image relative aspect-[4/3] overflow-hidden">
           <img
@@ -48,7 +48,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             alt={recipe.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
-          
+
           {/* Difficulty Badge */}
           <div
             className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold capitalize ${getDifficultyClass(
@@ -61,11 +61,10 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           {/* Save Button */}
           <button
             onClick={handleSave}
-            className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-all ${
-              isSaved
+            className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-all ${isSaved
                 ? 'bg-primary text-primary-foreground'
                 : 'bg-card/80 text-muted-foreground hover:bg-primary hover:text-primary-foreground'
-            }`}
+              }`}
           >
             <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-current' : ''}`} />
           </button>
@@ -80,14 +79,14 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4">
+        <div className="p-4 flex-grow flex flex-col">
           {/* Category */}
           <span className="text-xs font-medium uppercase tracking-wider text-primary">
             {recipe.category}
           </span>
 
           {/* Title */}
-          <h3 className="mt-2 line-clamp-2 font-serif text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+          <h3 className="mt-2 line-clamp-2 min-h-[3.5rem] font-serif text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
             {recipe.title}
           </h3>
 
@@ -104,15 +103,15 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           </div>
 
           {/* Author & Stats */}
-          <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+          <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
             {/* Author */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 min-w-0">
               <img
                 src={recipe.author.avatar}
                 alt={recipe.author.name}
-                className="h-8 w-8 rounded-full object-cover ring-2 ring-background"
+                className="h-8 w-8 flex-shrink-0 rounded-full object-cover ring-2 ring-background"
               />
-              <span className="text-sm font-medium text-foreground">
+              <span className="text-sm font-medium text-foreground truncate">
                 {recipe.author.name}
               </span>
             </div>
@@ -131,9 +130,8 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
                 className="flex items-center gap-1 transition-colors hover:text-accent"
               >
                 <Heart
-                  className={`h-4 w-4 transition-colors ${
-                    isLiked ? 'fill-accent text-accent' : ''
-                  }`}
+                  className={`h-4 w-4 transition-colors ${isLiked ? 'fill-accent text-accent' : ''
+                    }`}
                 />
                 <span className="text-sm">{likes}</span>
               </button>

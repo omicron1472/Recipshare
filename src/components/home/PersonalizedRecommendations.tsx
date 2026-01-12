@@ -21,7 +21,7 @@ const getPersonalizedRecommendations = (): RecommendationSection[] => {
   // - Search history
   // - Diet preferences
   // - Interaction patterns
-  
+
   return [
     {
       id: 'recommended',
@@ -54,70 +54,68 @@ const getPersonalizedRecommendations = (): RecommendationSection[] => {
 
 function RecommendationCard({ recipe }: { recipe: Recipe }) {
   return (
-    <Link 
-      to={`/recipe/${recipe.id}`} 
-      className="group flex-shrink-0 w-[280px] sm:w-[320px]"
+    <Link
+      to={`/recipe/${recipe.id}`}
+      className="group flex-shrink-0 w-[280px] sm:w-[320px] h-full"
     >
-      <article className="relative overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-        {/* Image */}
-        <div className="relative aspect-[16/10] overflow-hidden">
+      <article className="relative h-full overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col">
+        {/* Image - Clean without text overlay */}
+        <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
           <img
             src={recipe.image}
             alt={recipe.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-          
+
           {/* Category Badge */}
           <div className="absolute left-3 top-3 rounded-full bg-card/90 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
             {recipe.category}
           </div>
-          
+
           {/* Difficulty Badge */}
-          <div className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-xs font-semibold backdrop-blur-sm ${
-            recipe.difficulty === 'easy' 
-              ? 'bg-green-500/90 text-white' 
-              : recipe.difficulty === 'medium' 
-                ? 'bg-yellow-500/90 text-foreground' 
-                : 'bg-red-500/90 text-white'
-          }`}>
+          <div className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-xs font-semibold backdrop-blur-sm ${recipe.difficulty === 'easy'
+            ? 'bg-green-500/90 text-white'
+            : recipe.difficulty === 'medium'
+              ? 'bg-yellow-500/90 text-foreground'
+              : 'bg-red-500/90 text-white'
+            }`}>
             {recipe.difficulty.charAt(0).toUpperCase() + recipe.difficulty.slice(1)}
           </div>
-          
-          {/* Content Overlay */}
-          <div className="absolute inset-x-0 bottom-0 p-4">
-            <h3 className="line-clamp-2 font-serif text-lg font-bold text-white">
-              {recipe.title}
-            </h3>
-            
-            <div className="mt-2 flex items-center justify-between">
-              {/* Author */}
-              <div className="flex items-center gap-2">
-                <img
-                  src={recipe.author.avatar}
-                  alt={recipe.author.name}
-                  className="h-6 w-6 rounded-full ring-2 ring-white/50"
-                />
-                <span className="text-sm font-medium text-white/90">
-                  {recipe.author.name}
-                </span>
-              </div>
-              
-              {/* Stats */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1 text-white/90">
-                  <Clock className="h-3.5 w-3.5" />
-                  <span className="text-xs font-medium">{recipe.cookingTime}m</span>
-                </div>
-                <div className="flex items-center gap-1 text-white/90">
-                  <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
-                  <span className="text-xs font-medium">{recipe.rating}</span>
-                </div>
-              </div>
+        </div>
+
+        {/* Content Section - Below Image */}
+        <div className="p-4 flex-grow flex flex-col">
+          {/* Dish Title */}
+          <h3 className="line-clamp-2 min-h-[3.5rem] font-serif text-lg font-bold text-foreground transition-colors group-hover:text-primary">
+            {recipe.title}
+          </h3>
+
+          {/* Time & Rating Row */}
+          <div className="mt-3 flex items-center justify-between text-sm">
+            {/* Cooking Time */}
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <Clock className="h-4 w-4" />
+              <span>{recipe.cookingTime} min</span>
             </div>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1">
+              <Star className="h-4 w-4 fill-recipe-medium text-recipe-medium" />
+              <span className="font-medium text-foreground">{recipe.rating}</span>
+            </div>
+          </div>
+
+          {/* Author Row */}
+          <div className="mt-auto flex items-center gap-2 border-t border-border pt-3">
+            <img
+              src={recipe.author.avatar}
+              alt={recipe.author.name}
+              className="h-7 w-7 flex-shrink-0 rounded-full object-cover ring-1 ring-border"
+            />
+            <span className="text-sm text-muted-foreground truncate">
+              by <span className="font-medium text-foreground">{recipe.author.name}</span>
+            </span>
           </div>
         </div>
       </article>
@@ -125,15 +123,16 @@ function RecommendationCard({ recipe }: { recipe: Recipe }) {
   );
 }
 
+
 function RecommendationRow({ section }: { section: RecommendationSection }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = 340;
-      const newScrollLeft = scrollContainerRef.current.scrollLeft + 
+      const newScrollLeft = scrollContainerRef.current.scrollLeft +
         (direction === 'left' ? -scrollAmount : scrollAmount);
-      
+
       scrollContainerRef.current.scrollTo({
         left: newScrollLeft,
         behavior: 'smooth',
@@ -158,7 +157,7 @@ function RecommendationRow({ section }: { section: RecommendationSection }) {
             </p>
           </div>
         </div>
-        
+
         {/* Navigation Arrows */}
         <div className="flex items-center gap-2">
           <Button
@@ -179,16 +178,16 @@ function RecommendationRow({ section }: { section: RecommendationSection }) {
           </Button>
         </div>
       </div>
-      
+
       {/* Scrollable Cards Container */}
-      <div 
+      <div
         ref={scrollContainerRef}
-        className="hide-scrollbar flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+        className="hide-scrollbar flex items-stretch gap-5 overflow-x-auto pb-4 scroll-smooth"
       >
         {section.recipes.map((recipe, index) => (
           <div
             key={`${section.id}-${recipe.id}-${index}`}
-            className="animate-fade-up opacity-0"
+            className="animate-fade-up opacity-0 flex"
             style={{
               animationDelay: `${index * 0.05}s`,
               animationFillMode: 'forwards',
@@ -221,7 +220,7 @@ export function PersonalizedRecommendations() {
             Handpicked recommendations based on your saved recipes, search history, and dietary preferences
           </p>
         </div>
-        
+
         {/* Recommendation Rows */}
         {recommendations.map((section) => (
           <RecommendationRow key={section.id} section={section} />

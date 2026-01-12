@@ -19,8 +19,8 @@ export function RecipeCardCompact({ recipe }: RecipeCardCompactProps) {
   };
 
   return (
-    <Link to={`/recipe/${recipe.id.split('-')[0]}`} className="group block">
-      <article className="recipe-card overflow-hidden rounded-2xl bg-card">
+    <Link to={`/recipe/${recipe.id.split('-')[0]}`} className="group block h-full">
+      <article className="recipe-card h-full overflow-hidden rounded-2xl bg-card flex flex-col">
         {/* Image Container */}
         <div className="recipe-card-image relative aspect-[4/3] overflow-hidden">
           <img
@@ -29,7 +29,7 @@ export function RecipeCardCompact({ recipe }: RecipeCardCompactProps) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          
+
           {/* Category Tag */}
           <div className="absolute left-3 top-3 rounded-full bg-card/90 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur-sm">
             {recipe.category}
@@ -38,11 +38,10 @@ export function RecipeCardCompact({ recipe }: RecipeCardCompactProps) {
           {/* Favorite Button */}
           <button
             onClick={handleLike}
-            className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-all ${
-              isLiked
+            className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-all ${isLiked
                 ? 'bg-accent text-accent-foreground'
                 : 'bg-card/80 text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-            }`}
+              }`}
           >
             <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
           </button>
@@ -52,9 +51,9 @@ export function RecipeCardCompact({ recipe }: RecipeCardCompactProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4">
+        <div className="p-4 flex-grow flex flex-col">
           {/* Title */}
-          <h3 className="line-clamp-2 font-serif text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+          <h3 className="line-clamp-2 min-h-[3rem] font-serif text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
             {recipe.title}
           </h3>
 
@@ -74,13 +73,13 @@ export function RecipeCardCompact({ recipe }: RecipeCardCompactProps) {
           </div>
 
           {/* Author */}
-          <div className="mt-3 flex items-center gap-2 border-t border-border pt-3">
+          <div className="mt-auto flex items-center gap-2 border-t border-border pt-3">
             <img
               src={recipe.author.avatar}
               alt={recipe.author.name}
-              className="h-7 w-7 rounded-full object-cover ring-1 ring-border"
+              className="h-7 w-7 flex-shrink-0 rounded-full object-cover ring-1 ring-border"
             />
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-muted-foreground truncate">
               by <span className="font-medium text-foreground">{recipe.author.name}</span>
             </span>
           </div>
