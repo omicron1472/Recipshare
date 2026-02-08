@@ -42,35 +42,6 @@
 | 🎓 **Students** | Learn cooking basics with easy-to-follow recipes |
 | 👨‍🍳 **Professional Chefs** | Share expertise and discover trending cuisines |
 
----
-
-## 🎬 Animated Demos
-
-### Home Feed
-<p align="center">
-  <img src="assets/gifs/home-feed.gif" alt="Home Feed Animation" width="700"/>
-</p>
-<p align="center"><em>Browse trending recipes with smooth animations and intuitive filtering</em></p>
-
-### Recipe Submission
-<p align="center">
-  <img src="assets/gifs/recipe-submission.gif" alt="Recipe Submission Animation" width="700"/>
-</p>
-<p align="center"><em>Create and publish recipes with our step-by-step form wizard</em></p>
-
-### AI Recipe Assistant
-<p align="center">
-  <img src="assets/gifs/ai-assistant.gif" alt="AI Assistant Animation" width="700"/>
-</p>
-<p align="center"><em>Chat with our AI assistant for personalized cooking advice</em></p>
-
-### Dashboard Analytics
-<p align="center">
-  <img src="assets/gifs/dashboard.gif" alt="Dashboard Animation" width="700"/>
-</p>
-<p align="center"><em>Track your recipe performance with interactive analytics</em></p>
-
----
 
 ## ✨ Features
 
